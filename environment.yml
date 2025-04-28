@@ -1,0 +1,35 @@
+name: namastox
+channels:
+  - default
+  - rdkit
+  - conda-forge 
+  - chembl
+dependencies:
+  - pip
+  - python=3.10
+  - numpy=1.26.*
+  - setuptools
+  - scikit-learn=1.4.*
+  - imbalanced-learn=0.12.*
+  - chembl_structure_pipeline
+  - rdkit=2023.09.*
+  - requests
+  - flask
+  - flask_cors
+  - pyyaml
+  - pytest
+  - psycopg2
+  - python-docx
+  - openpyxl
+  - appdirs
+  - python-dotenv
+  - pyjwt
+  - XlsxWriter
+  - supervisor
+  - nginx
+  - uwsgi
+  - Werkzeug==2.3.7
+  - pip:
+     - xgboost
+     - "https://github.com/phi-grib/standardiser/archive/master.zip"
+     - "https://github.com/phi-grib/nonconformist/archive/master.zip"
