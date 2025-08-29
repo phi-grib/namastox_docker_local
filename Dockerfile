@@ -1,5 +1,5 @@
 # creating the docker image 
-FROM continuumio/miniconda3:25.1.1-2
+FROM continuumio/miniconda3
 # creation of a ras directory 
 RUN mkdir -p /data/ras
 
@@ -23,7 +23,7 @@ COPY namastox /opt/backend/namastox
 COPY namastox_API /opt/backend/namastox_API
 
 
-#create and active namastox conda environment.
+# create and active namastox conda environment.
 WORKDIR /opt/backend/namastox
 COPY environment.yml .
 RUN  conda update -n base -c defaults conda
@@ -58,6 +58,7 @@ RUN useradd --no-create-home nginx
 RUN chmod -R 755 /opt/conda/envs/namastox/var/log/nginx/
 RUN chmod -R 777 /opt/backend/namastox_API/
 
+COPY ./server-conf/.htpasswd /opt/conda/envs/namastox/etc/nginx/
 COPY ./server-conf/nginx.conf /opt/conda/envs/namastox/etc/nginx/
 COPY ./server-conf/flask-site-nginx.conf /opt/conda/envs/namastox/etc/nginx/conf.d/
 COPY ./server-conf/uwsgi.ini /opt/backend/namastox_API/
@@ -67,14 +68,4 @@ COPY start.sh /opt/backend/namastox_API
 RUN chmod +x /opt/backend/namastox_API/start.sh 
 
 CMD ["/opt/backend/namastox_API/start.sh"]
-
-
-
-
-
-
-
-
-
-
 
