@@ -1,9 +1,8 @@
 ## LOCAL VERSION OF NAMASTOX
 ### Namastox_API configuration
 1. Delete or comment  **Keycloak.py** file because it contains the logic to work with keycloak authentication.
-2. app.py needs to look like this
-![image](https://github.com/user-attachments/assets/3a8c25ab-34d4-4cb0-9724-056d9b4b8212)
-
+2. Replace **namastox_API's app.py** with the one contained in the repository.
+   
 ### Namastox_WEB configuration
 1. In the  **app.component.ts** file, comment function to get the logged-in user  and define static username
 <img width="513" height="167"  alt="image" src="https://github.com/user-attachments/assets/77b60b37-e3d3-48be-a895-9b16cf178417" /> <br>
