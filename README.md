@@ -35,8 +35,8 @@ docker build -t namedocker .
 docker run -d -p 5000:80 namedocker 
 ```
 
-It is advisable to map a local folder of the host for persinstent storing the projects. In this case, map the internal /data file using a command like this
+It is advisable to map a local folder of the host to the internal /data folder for storing persistently the projects. Otherwise, all the projects created by NAMASTOX will be completely lost every time the container is stoped. For doing this, map the internal /data file using a command like this:
 ```
 docker run -d -p 5000:80 -v /home/namastox/data:/data namedocker
 ```
-where /home/namatox/data is the name of the local folder (change for any suitable name)
+where **/home/namatox/data** is the name of the local folder (change for any suitable name)
