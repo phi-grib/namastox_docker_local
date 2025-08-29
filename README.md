@@ -8,7 +8,7 @@
 <img width="513" height="167"  alt="image" src="https://github.com/user-attachments/assets/77b60b37-e3d3-48be-a895-9b16cf178417" /> <br>
 2. Generate production version of interface
 ```
-npm run build
+ng build
 ```
 3. Change name of folder generated **namastox_web** to **static**
 4. Move **static** folder inside  **namastox_API** if the static folder exists, replace it with yours.
