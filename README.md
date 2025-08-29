@@ -5,7 +5,8 @@ This repository contains a dockerfile and instructions for building a docker ima
 Start cloning locally the repositories:
 - namastox
 - namastox_API
-- namastox_wb
+- namastox_web
+- flame
 
 Then, apply the following changes:
 
@@ -13,7 +14,7 @@ Then, apply the following changes:
 1. Delete **keycloak.py** file because it contains the logic to work with keycloak authentication.
 2. Replace **namastox_API's app.py** with the one contained in the repository.
    
-### mamastox_web configuration
+### namastox_web configuration
 1. In the  **app.component.ts** file, comment function to get the logged-in user  and define static username
 <img width="513" height="167"  alt="image" src="https://github.com/user-attachments/assets/77b60b37-e3d3-48be-a895-9b16cf178417" /> <br>
 2. Generate production version of interface
