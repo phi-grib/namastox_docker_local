@@ -4,15 +4,15 @@ This repository contains a dockerfile and instructions for building a docker ima
 
 Start cloning locally the repositories:
 - namastox
-- namastox_API
+- namastox_api
 - namastox_web
 - flame
 
 Then, apply the following changes:
 
-### namastox_API configuration
+### namastox_api configuration
 1. Delete **keycloak.py** file because it contains the logic to work with keycloak authentication.
-2. Replace **namastox_API's app.py** with the one contained in the repository.
+2. Replace **namastox_api's app.py** with the one contained in the repository.
    
 ### namastox_web configuration
 1. In the  **app.component.ts** file, comment function to get the logged-in user  and define static username
@@ -22,7 +22,7 @@ Then, apply the following changes:
 ng build
 ```
 3. Change name of folder generated **namastox_web** to **static**
-4. Move **static** folder inside  **namastox_API** if the static folder exists, replace it with yours.
+4. Move **static** folder inside  **namastox_api** if the static folder exists, replace it with yours.
 
 
 ### How to create docker image
