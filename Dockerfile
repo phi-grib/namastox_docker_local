@@ -20,8 +20,7 @@ RUN apt-get update && \
 # copy flame library, backend and frontend inside the container.
 COPY flame /opt/flame
 COPY namastox /opt/backend/namastox
-COPY namastox_API /opt/backend/namastox_API
-
+COPY namastox_api /opt/backend/namastox_api
 
 # create and active namastox conda environment.
 WORKDIR /opt/backend/namastox
@@ -29,8 +28,7 @@ COPY environment.yml .
 RUN  conda update -n base -c defaults conda
 RUN  conda env create -f environment.yml
 
-ENV PATH /opt/conda/envs/namastox/bin:$PATH
-
+ENV PATH=/opt/conda/envs/namastox/bin:$PATH
 
 
 #Install and confgure flame
@@ -49,23 +47,23 @@ RUN mkdir nginx
 RUN chown -R www-data:www-data /var/log/nginx;
 RUN chmod -R 755 /var/log/nginx;
 
-# complete namastox_API install
-WORKDIR /opt/backend/namastox_API
+# complete namastox_api install
+WORKDIR /opt/backend/namastox_api
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn==21.2.0
 RUN useradd --no-create-home nginx
 
 RUN chmod -R 755 /opt/conda/envs/namastox/var/log/nginx/
-RUN chmod -R 777 /opt/backend/namastox_API/
+RUN chmod -R 777 /opt/backend/namastox_api/
 
 COPY ./server-conf/.htpasswd /opt/conda/envs/namastox/etc/nginx/
 COPY ./server-conf/nginx.conf /opt/conda/envs/namastox/etc/nginx/
 COPY ./server-conf/flask-site-nginx.conf /opt/conda/envs/namastox/etc/nginx/conf.d/
-COPY ./server-conf/uwsgi.ini /opt/backend/namastox_API/
+COPY ./server-conf/uwsgi.ini /opt/backend/namastox_api/
 COPY ./server-conf/supervisord.conf /opt/conda/envs/namastox/etc/
-COPY start.sh /opt/backend/namastox_API
+COPY start.sh /opt/backend/namastox_api
 
-RUN chmod +x /opt/backend/namastox_API/start.sh 
+RUN chmod +x /opt/backend/namastox_api/start.sh
 
-CMD ["/opt/backend/namastox_API/start.sh"]
+CMD ["/opt/backend/namastox_api/start.sh"]
 
