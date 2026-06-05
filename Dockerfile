@@ -30,7 +30,6 @@ RUN  conda env create -f environment.yml
 
 ENV PATH=/opt/conda/envs/namastox/bin:$PATH
 
-
 #Install and confgure flame
 WORKDIR /opt/flame
 RUN pip install -e .
@@ -61,7 +60,15 @@ COPY ./server-conf/nginx.conf /opt/conda/envs/namastox/etc/nginx/
 COPY ./server-conf/flask-site-nginx.conf /opt/conda/envs/namastox/etc/nginx/conf.d/
 COPY ./server-conf/uwsgi.ini /opt/backend/namastox_api/
 COPY ./server-conf/supervisord.conf /opt/conda/envs/namastox/etc/
-COPY start.sh /opt/backend/namastox_api
+
+# the copy option does not work well when building from windows due to incompatible
+# end of line chars
+# COPY start.sh /opt/backend/namastox_api
+
+RUN echo '#!/bin/bash \
+\n/usr/bin/env >> /etc/environment \
+\nservice cron start \
+\nsupervisord -n' >> /opt/backend/namastox_api/start.sh
 
 RUN chmod +x /opt/backend/namastox_api/start.sh
 
